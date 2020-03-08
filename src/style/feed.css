@@ -1,1 +1,1 @@
-.feed{overflow-y:scroll;scroll-behavior:smooth;width:calc(100% - smallpad * 2);flex-grow:1;margin-bottom:10px;border-radius:10px;padding:10px;background:#fff}.feed .no-messages{color:#aaa;width:100%;font-size:20px;margin-top:50px;text-align:center}
+.feed{overflow-y:scroll;scroll-behavior:smooth;width:calc(100% - (10px * 2));flex-grow:1;margin-bottom:10px;border-radius:10px;padding:10px;background:#fff}.feed .no-messages{color:#aaa;width:100%;font-size:20px;margin-top:50px;text-align:center}

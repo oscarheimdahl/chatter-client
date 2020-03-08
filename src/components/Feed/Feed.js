@@ -9,22 +9,26 @@ export class Feed extends Component {
     this.state = {
       feed: []
     };
+    this.allowScrollDown = true;
     this.feed = React.createRef();
     props.socket.on('message', message => {
       this.setState({ feed: [...this.state.feed, message] });
-      //   this.scrollToBottom();
+      this.scrollToBottom();
     });
   }
 
   componentDidUpdate(oldProps) {
     if (oldProps.ownMessage !== this.props.ownMessage) {
       this.setState({ feed: [...this.state.feed, this.props.ownMessage] });
+      this.scrollToBottom();
     }
   }
 
   scrollToBottom = () => {
-    console.log('scrolling...');
-    this.feed.current.scrollTop = this.feed.current.scrollHeight + 100;
+    if (this.allowScrollDown)
+      setTimeout(() => {
+        this.feed.current.scrollTop = this.feed.current.scrollHeight;
+      }, 100);
   };
 
   buildMessages = () => {

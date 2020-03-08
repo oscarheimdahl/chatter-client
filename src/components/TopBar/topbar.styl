@@ -1,7 +1,10 @@
+@import '../../resources/colors.styl'
+@import '../../resources/vars.styl'
 .top-bar
         display flex
         justify-content: space-between
-        padding: 0 0 10px 0
+        padding: 0 0 smallpad 0
+        color: white
 
         *
             font-size: 20px
@@ -18,3 +21,8 @@
             outline: none
             border: none
             text-align: right
+            background: transparent
+            color: white
+
+        .username-field::placeholder
+            color:lightgray

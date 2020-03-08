@@ -1,19 +1,19 @@
-@import '../InputBar/inputbar.styl'
+@import '../../resources/colors.styl'
+@import '../../resources/vars.styl'
 
 .feed
-    // background: yellow
     overflow-y: scroll
     scroll-behavior: smooth
-    width: calc(100% - 20px)
+    width: calc(100% - smallpad * 2)
     flex-grow: 1
-    margin-bottom: 10px
-    border: 1px solid black
+    margin-bottom: smallpad
     border-radius: brad
-    padding: 10px
+    padding: smallpad
+    background: white
 
     .no-messages
-        color: #bbb
+        color: lightgray
         width: 100%
         font-size: 20px
-        margin-top: 100px
+        margin-top: 50px
         text-align: center

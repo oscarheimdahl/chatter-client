@@ -1,11 +1,12 @@
-brad = 8px
+@import '../../resources/colors.styl'
+@import '../../resources/vars.styl'
 
 .inputbar
     bottom: 0
     width: 100%
 
     form
-        height:     50px
+        height: 50px
         width: 100%
         display: flex
         align-items: center
@@ -19,13 +20,13 @@ brad = 8px
         input
             resize: none;
             padding-left: 10px
-            // padding-top: 10px
             height: 100%
             flex-grow: 1
             height: calc(100% - 2px)
-            border: 1px solid black
+            // border: 1px solid black
+            background: white
             border-radius: brad
-            margin-right: 10px
+            margin-right: smallpad
 
         button 
             width: 150px
@@ -35,10 +36,11 @@ brad = 8px
             // border: 1px solid black
         
         .button-enabled
-            background: #FA6641
+            background: accent
             // background: linear-gradient(120deg, rgb(199, 70, 146), rgb(160, 20, 124))
             color: white
             cursor pointer
+            
         .button-disabled
             background:lightgray
             color: white

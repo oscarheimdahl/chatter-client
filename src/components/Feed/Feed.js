@@ -9,8 +9,10 @@ export class Feed extends Component {
     this.state = {
       feed: []
     };
+    this.feed = React.createRef();
     props.socket.on('message', message => {
       this.setState({ feed: [...this.state.feed, message] });
+      //   this.scrollToBottom();
     });
   }
 
@@ -20,21 +22,30 @@ export class Feed extends Component {
     }
   }
 
-  render() {
+  scrollToBottom = () => {
+    console.log('scrolling...');
+    this.feed.current.scrollTop = this.feed.current.scrollHeight + 100;
+  };
+
+  buildMessages = () => {
     let lastSenderID = null;
+    return this.state.feed.map((message, i) => {
+      if (lastSenderID === message.id) message.hideName = true;
+      lastSenderID = message.id;
+      return <Message key={i} message={message}></Message>;
+    });
+  };
+
+  render() {
     return (
-      <div className="feed">
+      <div className="feed" ref={this.feed}>
         <p
           style={{ display: this.state.feed.length === 0 ? '' : 'none' }}
           className="no-messages"
         >
           No messages yet...
         </p>
-        {this.state.feed.map((message, i) => {
-          if (lastSenderID === message.id) message.hideName = true;
-          lastSenderID = message.id;
-          return <Message key={i} message={message}></Message>;
-        })}
+        {this.buildMessages()}
       </div>
     );
   }

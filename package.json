@@ -13,13 +13,13 @@
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "11build-css": "stylus -c src/components/*/*.styl --out src/style",
-    "11watch-css": "npm run build-css && stylus -c -w src/components/*/*.styl --out src/style",
-    "11start-js": "react-scripts start",
-    "11start": "npm-run-all -p watch-css start-js",
+    "build-css": "stylus -c src/components/*/*.styl --out src/style",
+    "watch-css": "npm run build-css && stylus -c -w src/components/*/*.styl --out src/style",
+    "start-js": "react-scripts start",
+    "dev": "npm-run-all -p watch-css start-js",
     "start": "react-scripts start",
-    "11build-js": "react-scripts build",
-    "11build": "npm-run-all build-css build-js",
+    "build-js": "react-scripts build",
+    "COMMENTbuild": "npm-run-all build-css build-js",
     "build": "react-scripts build"
   },
   "eslintConfig": {

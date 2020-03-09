@@ -6,6 +6,7 @@ import TopBar from '../TopBar/TopBar';
 import '../../style/app.css';
 
 const socket = socketIOClient('https://chat-x-server.herokuapp.com/');
+// const socket = socketIOClient('localhost:4444');
 const id = Date.now();
 
 class App extends Component {

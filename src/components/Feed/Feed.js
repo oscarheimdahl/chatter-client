@@ -17,6 +17,17 @@ export class Feed extends Component {
     });
   }
 
+  componentDidMount() {
+    fetch('https://chat-x-server.herokuapp.com/allmessages')
+      // fetch('http://localhost:4444/allmessages')
+      .then(res => res.json())
+      .then(messages => {
+        console.log(messages);
+        this.setState({ feed: messages });
+        this.scrollToBottom();
+      });
+  }
+
   componentDidUpdate(oldProps) {
     if (oldProps.ownMessage !== this.props.ownMessage) {
       this.setState({ feed: [...this.state.feed, this.props.ownMessage] });
@@ -34,8 +45,8 @@ export class Feed extends Component {
   buildMessages = () => {
     let lastSenderID = null;
     return this.state.feed.map((message, i) => {
-      if (lastSenderID === message.id) message.hideName = true;
-      lastSenderID = message.id;
+      if (lastSenderID === message.userID) message.hideName = true;
+      lastSenderID = message.userID;
       return <Message key={i} message={message}></Message>;
     });
   };

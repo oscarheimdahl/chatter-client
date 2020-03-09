@@ -6,7 +6,9 @@ const Message = props => {
     <div className="message-wrapper">
       <div
         className={`message-body ${
-          props.message.own ? 'message-own' : 'message-other'
+          props.message.userID === props.userID
+            ? 'message-own'
+            : 'message-other'
         }`}
       >
         {props.message.hideName ? (

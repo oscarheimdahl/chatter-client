@@ -23,7 +23,7 @@ export class InputBar extends Component {
     let msg = {
       content: this.state.message,
       username: this.props.username || 'Anonymous',
-      userID: this.props.id,
+      userID: this.props.userID,
       time: Date.now()
     };
     this.state.socket.send(msg);

@@ -25,9 +25,9 @@ class App extends Component {
 
   setID = () => {
     const cookies = new Cookies();
-    this.id = cookies.get('chat-id');
-    if (!this.id) {
-      this.id = Date.now();
+    this.userID = cookies.get('chat-id');
+    if (!this.userID) {
+      this.userID = Date.now();
       cookies.set('chat-id', this.id, {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365)
       });
@@ -47,9 +47,13 @@ class App extends Component {
           users={this.state.users}
           handleUsername={this.handleUsername}
         ></TopBar>
-        <Feed socket={socket} ownMessage={this.state.ownMessage}></Feed>
+        <Feed
+          socket={socket}
+          ownMessage={this.state.ownMessage}
+          userID={this.userID}
+        ></Feed>
         <InputBar
-          id={this.id}
+          userID={this.userID}
           username={this.state.username}
           socket={socket}
           ownMessageToFeed={this.ownMessageToFeed}

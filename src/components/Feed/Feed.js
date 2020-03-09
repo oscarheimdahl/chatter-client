@@ -22,7 +22,6 @@ export class Feed extends Component {
       // fetch('http://localhost:4444/allmessages')
       .then(res => res.json())
       .then(messages => {
-        console.log(messages);
         this.setState({ feed: messages });
         this.scrollToBottom();
       });
@@ -47,7 +46,9 @@ export class Feed extends Component {
     return this.state.feed.map((message, i) => {
       if (lastSenderID === message.userID) message.hideName = true;
       lastSenderID = message.userID;
-      return <Message key={i} message={message}></Message>;
+      return (
+        <Message key={i} message={message} userID={this.props.userID}></Message>
+      );
     });
   };
 

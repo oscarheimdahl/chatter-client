@@ -10,7 +10,8 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "build-css": "stylus -c src/components/*/*.styl --out src/style",

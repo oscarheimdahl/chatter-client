@@ -4,10 +4,10 @@ import Feed from '../Feed/Feed';
 import InputBar from '../InputBar/InputBar';
 import TopBar from '../TopBar/TopBar';
 import '../../style/app.css';
+import Cookies from 'universal-cookie';
 
 const socket = socketIOClient('https://chat-x-server.herokuapp.com/');
 // const socket = socketIOClient('localhost:4444');
-const id = Date.now();
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +20,19 @@ class App extends Component {
     socket.on('users-changed', users => {
       this.setState({ users });
     });
+    this.setID();
   }
 
+  setID = () => {
+    const cookies = new Cookies();
+    this.id = cookies.get('chat-id');
+    if (!this.id) {
+      this.id = Date.now();
+      cookies.set('chat-id', this.id, {
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365)
+      });
+    }
+  };
   ownMessageToFeed = ownMessage => {
     this.setState({ ownMessage });
   };
@@ -38,7 +49,7 @@ class App extends Component {
         ></TopBar>
         <Feed socket={socket} ownMessage={this.state.ownMessage}></Feed>
         <InputBar
-          id={id}
+          id={this.id}
           username={this.state.username}
           socket={socket}
           ownMessageToFeed={this.ownMessageToFeed}
